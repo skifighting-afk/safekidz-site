@@ -1935,6 +1935,41 @@ p, li, summary { text-wrap: pretty; }
   #faq { padding-top: 56px !important; padding-bottom: 56px !important; }
   .tt-img img, .crit-ti img, .cmp-ti img { max-width: 100% !important; }
 }
+
+/* ===== 모바일 섹션 압축 (고객 스크롤 줄이기) ===== */
+@media (max-width: 760px) {
+  /* 입점 스키스쿨 3곳: 세로 3장 → 옆으로 넘기기 */
+  .sk3s { display: flex !important; gap: 12px; overflow-x: auto; scroll-snap-type: x mandatory; margin: 0 -16px; padding: 4px 16px 14px; scrollbar-width: none; }
+  .sk3s::-webkit-scrollbar { display: none; }
+  .sk3s > .sk3 { flex: 0 0 84%; scroll-snap-align: center; margin: 0 !important; }
+  .sk3 .pass { transform: scale(.82); transform-origin: top center; margin-bottom: -90px; }
+  /* 매장 존 4개: 2열 */
+  .zns { display: grid !important; grid-template-columns: 1fr 1fr; gap: 10px !important; }
+  .zns .zn { margin: 0 !important; }
+  .zns .zn h3 { font-size: 15px !important; }
+  /* 비교표: 라벨 위, 일반/세이프키즈 좌우 */
+  .vr { grid-template-columns: 1fr 1fr !important; gap: 6px !important; }
+  .vr .vc { grid-column: 1 / -1; grid-row: 1; justify-self: center; }
+  .vl, .vg { padding: 10px 12px !important; font-size: 13px !important; justify-content: flex-start !important; text-align: left !important; }
+  .vg strong { font-size: 14px !important; }
+  .vg small { display: none !important; }
+  .vl .xm { display: none; }
+  /* 룩북·컬러별 상품: 옆으로 넘기기 */
+  .lkb-items, .cg { display: flex !important; gap: 10px; overflow-x: auto; scroll-snap-type: x mandatory; margin-left: -16px !important; margin-right: -16px !important; padding: 4px 16px 10px !important; scrollbar-width: none; }
+  .lkb-items::-webkit-scrollbar, .cg::-webkit-scrollbar { display: none; }
+  .lkb-items > *, .cg > * { flex: 0 0 44%; scroll-snap-align: start; margin: 0 !important; }
+  /* 소품 4개: 2열 */
+  .lv2g { grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+  .lv2 figcaption b { font-size: 15px !important; }
+  /* 혜택 아래 둘러보기 썸네일: 픽업·렌탈샵 블록과 중복이라 모바일에선 숨김 */
+  .thbs { display: none !important; }
+}
+@media (max-width: 760px) {
+  .lv2 figcaption { white-space: nowrap; padding: 6px 10px !important; gap: 4px !important; left: 8px !important; bottom: 8px !important; }
+  .lv2 figcaption small { display: none !important; }
+  .lv2 figcaption b { font-size: 14px !important; }
+  .lv2 figcaption span { font-size: 11px !important; }
+}
 </style>
 <div class="sk"><header class="ph"><div class="ph-in"><a href="#top" class="ph-logo"><img src="img/logo.webp" alt="세이프키즈 로고"><span><b>SAFE KIDZ</b><small>SKI SCHOOL</small></span></a>
 <nav class="ph-nav" aria-label="주요 메뉴"><a href="#schools">입점 스키스쿨</a><a href="#perks">수강생 혜택</a><a href="#rental">어린이렌탈샵</a><a href="#price">가격</a><a href="#faq">FAQ</a></nav></div></header><section id="top" class="hn6">
