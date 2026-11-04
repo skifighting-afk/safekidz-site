@@ -4,159 +4,215 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>장비 픽업 예약 | 세이프키즈 SAFE KIDZ 곤지암</title>
-<meta name="description" content="곤지암 스키장 장비 픽업 예약. 원하는 날짜·시간에 예약하면 픽업맨이 곤지암 스키하우스 입구에서 장비를 전달하고 반납까지 받아드려요.">
+<meta name="description" content="곤지암 스키장 장비 픽업 예약. 날짜와 수령·반납 시간을 고르면 픽업맨이 곤지암 스키하우스 입구에서 장비를 전달하고 반납까지 받아드려요. 회당 1만원.">
 <link rel="canonical" href="https://safekidz.co.kr/pickup/">
 <meta property="og:title" content="장비 픽업 예약 | 세이프키즈"><meta property="og:description" content="무거운 스키 장비, 스키하우스 입구에서 받고 그 자리에서 반납하세요."><meta property="og:image" content="https://safekidz.co.kr/cv/hero_full.webp">
-<meta name="theme-color" content="#ffe3ee">
+<meta name="theme-color" content="#fdf7fa">
 <link rel="icon" href="../img/logo.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Fredoka:wght@600;700&display=swap" rel="stylesheet">
 <style>
-:root{--pink:#ff3d7f;--pink-d:#e0306e;--pink-s:#fff0f5;--ink:#2b2140;--sub:#6d6380;--line:#efe3ea;--bg:#fdf7fa;--card:#fff;--ok:#1f9d6e;--warn:#e8920c;--sans:'Noto Sans KR',system-ui,sans-serif}
+:root{--pink:#ff3d7f;--pink-d:#e0306e;--pink-s:#fff0f5;--ink:#2b2140;--sub:#6d6380;--line:#efe3ea;--bg:#fdf7fa;--ok:#1f9d6e;--sans:'Noto Sans KR',system-ui,sans-serif}
 *{box-sizing:border-box;margin:0}
 body{background:var(--bg);color:var(--ink);font:500 15px/1.55 var(--sans);-webkit-font-smoothing:antialiased;word-break:keep-all}
-a{color:inherit}
-button{font:inherit;color:inherit}
-.top{position:sticky;top:0;z-index:10;background:rgb(253 247 250/.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.top-in{max-width:720px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand img{width:38px;height:38px;border-radius:50%}.brand b{font:700 17px/1 Fredoka,var(--sans);color:var(--pink);letter-spacing:.02em}.brand small{display:block;font:700 10px/1.4 var(--sans);color:#8a7fa8;letter-spacing:.14em}
+button{font:inherit;color:inherit}a{color:inherit}
+.top{position:sticky;top:0;z-index:10;background:rgb(253 247 250/.94);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.top-in{max-width:640px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 16px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none}.brand img{width:36px;height:36px;border-radius:50%}.brand b{font:700 17px/1 Fredoka,var(--sans);color:var(--pink)}.brand small{display:block;font:700 10px/1.4 var(--sans);color:#8a7fa8;letter-spacing:.14em}
 .tabs{display:flex;gap:4px;padding:4px;background:#fff;border-radius:12px;border:1px solid var(--line)}
 .tabs button{border:0;background:none;padding:8px 12px;border-radius:9px;font-weight:700;font-size:13px;color:var(--sub);cursor:pointer}.tabs button[aria-selected=true]{background:var(--pink);color:#fff}
-main{max-width:720px;margin:0 auto;padding:20px 16px 120px}
-.hero{background:linear-gradient(160deg,#ffe3ee,#f3e8ff);border-radius:22px;padding:26px 22px;margin-bottom:16px;position:relative;overflow:hidden}
-.hero .k{font:700 12px/1 var(--sans);letter-spacing:.18em;color:var(--pink)}
-.hero h1{font:900 30px/1.2 var(--sans);letter-spacing:-.04em;margin:10px 0 8px}
-.hero p{color:var(--sub);font-size:15px}
-.flow{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
-.flow div{background:#fff;border-radius:14px;padding:14px}
-.flow b{display:block;font:900 15px/1.3 var(--sans);margin-bottom:4px}.flow span{font-size:13px;color:var(--sub)}
-.flow em{font-style:normal;color:var(--pink);font-weight:800}
-.card{background:var(--card);border-radius:18px;padding:20px;margin-bottom:12px;box-shadow:0 10px 30px -24px rgb(90 40 90/.5);border:1px solid var(--line)}
-.card h2{font:900 18px/1.3 var(--sans);letter-spacing:-.02em;margin-bottom:4px;display:flex;align-items:center;gap:8px}
-.card h2 i{font-style:normal;display:inline-grid;place-items:center;width:24px;height:24px;border-radius:7px;background:var(--pink);color:#fff;font:800 13px/1 var(--sans)}
-.card .hint{font-size:13px;color:var(--sub);margin-bottom:14px}
-.grid{display:grid;gap:8px}.g2{grid-template-columns:1fr 1fr}.g4{grid-template-columns:repeat(4,1fr)}
-.opt{border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 8px;text-align:center;cursor:pointer;transition:border-color .15s,background .15s}
-.opt b{display:block;font:900 18px/1.2 var(--sans);letter-spacing:-.02em}.opt small{display:block;font-size:12px;color:var(--sub);margin-top:2px}
+.steps{max-width:640px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:10px 16px 0}
+.steps span{display:block;text-align:center;font:800 12px/1 var(--sans);color:#b7abc2;padding-bottom:9px;border-bottom:3px solid #eadfe7}
+.steps span.on{color:var(--pink-d);border-color:var(--pink)}.steps span.done{color:var(--ink);border-color:#f7b8cf}
+main{max-width:640px;margin:0 auto;padding:16px 16px 140px}
+.card{background:#fff;border-radius:18px;padding:18px;margin-bottom:12px;border:1px solid var(--line);box-shadow:0 10px 30px -26px rgb(90 40 90/.6)}
+.card h2{font:900 18px/1.3 var(--sans);letter-spacing:-.02em;margin-bottom:4px}
+.hint{font-size:13px;color:var(--sub)}
+.intro{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;margin-bottom:12px}
+.intro h1{font:900 24px/1.25 var(--sans);letter-spacing:-.04em}.intro p{font-size:13px;color:var(--sub);margin-top:4px}
+.price{text-align:right;flex:none}.price b{display:block;font:900 22px/1 var(--sans);color:var(--pink-d)}.price small{font-size:12px;color:var(--sub)}
+.months{display:flex;gap:6px;margin:4px 0 12px}
+.months button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 0;font-weight:800;font-size:15px;cursor:pointer}
+.months button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
+.cal .w{font:700 12px/1 var(--sans);color:var(--sub);padding:6px 0}.cal .w:first-child{color:#e0306e}.cal .w:last-child{color:#3b6fd8}
+.cal button{position:relative;aspect-ratio:1;border:0;border-radius:10px;background:#f8f3f6;font:700 15px/1 var(--sans);cursor:pointer}
+.cal button:disabled{background:none;color:#cfc6d6;cursor:default}
+.cal button.sun{color:#e0306e}.cal button.sat{color:#3b6fd8}
+.cal button.sel{background:var(--pink);color:#fff}
+.cal button.has::after{content:attr(data-n);position:absolute;right:3px;top:3px;min-width:15px;height:15px;padding:0 3px;border-radius:5px;background:var(--ink);color:#fff;font:800 10px/15px var(--sans)}
+.cal button.sel.has::after{background:#fff;color:var(--pink-d)}
+.pick{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
+.pick h3{font:900 16px/1.3 var(--sans);margin-bottom:10px}
+.lbl{font:800 13px/1 var(--sans);color:var(--sub);margin:12px 0 8px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.opt{border:1.5px solid var(--line);background:#fff;border-radius:11px;padding:10px 2px;text-align:center;cursor:pointer}
+.opt b{display:block;font:900 16px/1.2 var(--sans)}.opt small{display:block;font-size:11px;color:var(--sub);margin-top:2px}
 .opt[aria-pressed=true]{border-color:var(--pink);background:var(--pink-s)}.opt[aria-pressed=true] b{color:var(--pink-d)}
-.opt:disabled{opacity:.38;cursor:not-allowed;text-decoration:line-through}
-.opt.sch{font-weight:800;font-size:14px;padding:14px 6px}
-input[type=date],input[type=text],input[type=tel],textarea{width:100%;font:600 16px/1.4 var(--sans);color:var(--ink);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none}
-input:focus,textarea:focus{border-color:var(--pink)}
-textarea{min-height:76px;resize:vertical;font-weight:500;font-size:15px}
-label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:12px 0 6px}
-.step{display:flex;align-items:center;gap:0;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;width:max-content}
-.step button{border:0;background:#fff;width:48px;height:48px;font-size:22px;font-weight:700;cursor:pointer;color:var(--pink)}
-.step output{min-width:70px;text-align:center;font:900 20px/1 var(--sans)}
-.agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--sub);margin-top:4px}.agree input{width:20px;height:20px;accent-color:var(--pink);flex:none;margin-top:1px}
-.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(to top,var(--bg) 70%,rgb(253 247 250/0));padding:14px 16px calc(14px + env(safe-area-inset-bottom))}
-.bar-in{max-width:720px;margin:0 auto}
-.sum{font-size:13px;color:var(--sub);margin-bottom:8px;text-align:center;min-height:20px}.sum b{color:var(--ink)}
-.go{width:100%;border:0;border-radius:14px;height:56px;background:var(--pink);color:#fff;font:900 17px/1 var(--sans);cursor:pointer;box-shadow:0 14px 26px -14px var(--pink)}
+.opt:disabled{opacity:.35;cursor:not-allowed}
+.add{width:100%;margin-top:14px;border:0;border-radius:12px;height:50px;background:var(--ink);color:#fff;font:800 15px/1 var(--sans);cursor:pointer}.add:disabled{background:#d9cfe0;cursor:not-allowed}
+.rounds{display:grid;gap:8px}
+.rd{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px 12px 12px 14px;border-radius:12px;background:var(--pink-s)}
+.rd i{font:900 13px/1 var(--sans);font-style:normal;color:var(--pink-d)}
+.rd b{display:block;font:900 15px/1.3 var(--sans)}.rd span{font-size:13px;color:var(--sub)}
+.rd button{border:0;background:#fff;border-radius:8px;padding:7px 10px;font-weight:800;font-size:12px;color:var(--sub);cursor:pointer}
+.empty{font-size:14px;color:var(--sub);text-align:center;padding:10px 0}
+input[type=text],input[type=tel],textarea{width:100%;font:600 16px/1.4 var(--sans);color:var(--ink);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none}
+input:focus,textarea:focus{border-color:var(--pink)}textarea{min-height:72px;resize:vertical;font-weight:500;font-size:15px}
+label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14px 0 6px}label.f:first-of-type{margin-top:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}.grid2 .opt{padding:13px 4px;font-weight:800;font-size:14px}
+.step{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;width:max-content;background:#fff}
+.step button{border:0;background:#fff;width:48px;height:46px;font-size:22px;font-weight:700;cursor:pointer;color:var(--pink)}
+.step output{min-width:64px;text-align:center;font:900 19px/1 var(--sans)}
+.sum div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.sum div:last-child{border:0}.sum span{color:var(--sub)}.sum b{text-align:right}
+.total{display:flex;justify-content:space-between;align-items:baseline;padding-top:12px;margin-top:4px;border-top:2px solid var(--ink)}.total b{font:900 22px/1 var(--sans);color:var(--pink-d)}
+.notes{display:grid;gap:10px;margin-top:6px}
+.notes div{display:grid;grid-template-columns:22px 1fr;gap:8px;font-size:14px;line-height:1.55}
+.notes i{display:grid;place-items:center;width:22px;height:22px;border-radius:7px;background:var(--pink-s);color:var(--pink-d);font:900 12px/1 var(--sans);font-style:normal;margin-top:1px}
+.notes b{color:var(--ink)}
+.agree{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--sub);margin-top:14px}.agree input{width:20px;height:20px;accent-color:var(--pink);flex:none;margin-top:1px}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:20;background:linear-gradient(to top,var(--bg) 72%,rgb(253 247 250/0));padding:16px 16px calc(12px + env(safe-area-inset-bottom))}
+.bar-in{max-width:640px;margin:0 auto;display:flex;gap:8px;align-items:center}
+.back{flex:none;height:56px;padding:0 18px;border:1.5px solid var(--line);background:#fff;border-radius:14px;font-weight:800;cursor:pointer}
+.go{flex:1;border:0;border-radius:14px;height:56px;background:var(--pink);color:#fff;font:900 16px/1 var(--sans);cursor:pointer;box-shadow:0 14px 26px -14px var(--pink)}
 .go:disabled{background:#d9cfe0;box-shadow:none;cursor:not-allowed}
-.err{color:#d6284c;font-weight:700;font-size:14px;text-align:center;margin-top:8px;min-height:20px}
-.done{text-align:center;padding:30px 22px}
-.done .code{font:900 46px/1 Fredoka,var(--sans);letter-spacing:.12em;color:var(--pink);margin:12px 0 4px}
-.done h2{justify-content:center}
-.rows{margin-top:16px;text-align:left;border-top:1px solid var(--line)}
-.rows div{display:flex;justify-content:space-between;gap:12px;padding:11px 2px;border-bottom:1px solid var(--line);font-size:14px}.rows span{color:var(--sub)}.rows b{text-align:right}
-.note{background:#fff8e6;border-radius:12px;padding:12px 14px;font-size:13px;color:#7a5a12;margin-top:14px;text-align:left}
-.info dl div{display:grid;grid-template-columns:88px 1fr;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.info dl div:last-child{border:0}.info dt{font-weight:800;color:var(--sub)}
-.bk{border:1.5px solid var(--line);border-radius:14px;padding:14px;margin-top:10px}
-.bk .h{display:flex;justify-content:space-between;align-items:center;gap:8px}.bk .h b{font:900 16px/1.3 var(--sans)}
-.st{display:inline-block;padding:4px 8px;border-radius:7px;font:800 12px/1 var(--sans);background:var(--pink-s);color:var(--pink-d)}.st.ok{background:#e4f6ee;color:var(--ok)}.st.no{background:#eee;color:#888}
-.bk p{font-size:14px;color:var(--sub);margin-top:6px}
-.lnk{border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;font-weight:800;font-size:13px;cursor:pointer;margin-top:10px}
-.foot{text-align:center;font-size:13px;color:var(--sub);margin-top:22px}.foot a{font-weight:800;color:var(--pink-d);text-decoration:none}
+.go small{display:block;font:700 12px/1 var(--sans);opacity:.85;margin-bottom:4px}
+.err{color:#d6284c;font-weight:700;font-size:13px;text-align:center;min-height:18px;max-width:640px;margin:0 auto 6px}
+.done{text-align:center;padding:28px 20px}.done .code{font:900 46px/1 Fredoka,var(--sans);letter-spacing:.12em;color:var(--pink);margin:14px 0 4px}
+.done .sum{text-align:left;margin-top:16px}
+.lnk{display:inline-block;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;font-weight:800;font-size:13px;cursor:pointer;margin-top:14px;text-decoration:none}
+.bk{border:1.5px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:8px}.bk b{font:900 15px/1.3 var(--sans)}.bk p{font-size:13px;color:var(--sub);margin-top:4px}
+.st{float:right;padding:4px 8px;border-radius:7px;font:800 12px/1 var(--sans);background:#e4f6ee;color:var(--ok)}
+.tag{display:inline-block;padding:4px 8px;border-radius:6px;background:#fff3d6;color:#8a5a00;font:800 11px/1 var(--sans);margin-left:6px;vertical-align:middle}
+.foot{text-align:center;font-size:13px;color:var(--sub);margin-top:18px}.foot a{font-weight:800;color:var(--pink-d);text-decoration:none}
 [hidden]{display:none!important}
-@media(max-width:420px){.hero h1{font-size:26px}.g4{grid-template-columns:1fr 1fr}.flow{grid-template-columns:1fr}}
+@media(max-width:380px){.grid4{grid-template-columns:1fr 1fr}.intro h1{font-size:21px}}
 </style>
 </head>
 <body>
-<header class="top"><div class="top-in"><a class="brand" href="../"><img src="../img/logo.webp" alt="세이프키즈 로고"><span><b>SAFE KIDZ</b><small>장비 픽업</small></span></a>
-<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="book">예약하기</button><button role="tab" aria-selected="false" data-tab="mine">내 예약</button></div></div></header>
+<header class="top"><div class="top-in"><a class="brand" href="../"><img src="../img/logo.webp" alt="세이프키즈 로고"><span><b>SAFE KIDZ</b><small>장비 픽업 예약</small></span></a>
+<div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="book">예약하기</button><button role="tab" aria-selected="false" data-tab="mine">내 예약</button></div></div>
+<div class="steps" id="steps"><span data-s="1">1 날짜 · 시간</span><span data-s="2">2 예약자 정보</span><span data-s="3">3 확인 · 결제</span></div></header>
 <main>
-<section id="book">
- <div class="hero"><p class="k">EQUIPMENT PICKUP</p><h1>무거운 장비,<br>스키하우스 앞에서 받으세요</h1><p>원하는 날짜·시간에 예약하면 픽업맨이 장비를 들고 기다려요.</p>
-  <div class="flow"><div><b>장비 수령</b><span>예약한 시간에 <em id="placeA">곤지암 스키하우스 입구 밖 눈사람 인형</em> 앞에서 픽업맨을 만나 받아요.</span></div><div><b>장비 반납</b><span>고른 반납 시간에 같은 장소에서 돌려주세요. 픽업맨은 <em id="waitA">최대 30분</em> 기다려요.</span></div></div></div>
-
- <div class="card"><h2><i>1</i>날짜</h2><p class="hint">스키장 가는 날을 골라 주세요</p><input type="date" id="date"></div>
- <div class="card"><h2><i>2</i>장비 받는 시간</h2><p class="hint">시간부터 30분 동안 픽업맨이 기다려요</p><div class="grid g4" id="picks"></div></div>
- <div class="card"><h2><i>3</i>장비 반납 시간</h2><p class="hint">반납 시간부터 30분 동안 받아요 · 늦으면 렌탈샵으로 직접 반납해 주세요</p><div class="grid g4" id="rets"></div></div>
- <div class="card"><h2><i>4</i>강습받는 스키스쿨</h2><p class="hint">강습 없이 타시면 '그 외'를 골라 주세요</p><div class="grid g2" id="schools"></div></div>
- <div class="card"><h2><i>5</i>장비 수</h2><p class="hint" id="feeA">픽업·반납 장비당 1만원</p><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1개</output><button type="button" id="plus" aria-label="늘리기">+</button></div></div>
- <div class="card"><h2><i>6</i>예약자 정보</h2>
-  <label class="f" for="name">예약자 성함</label><input type="text" id="name" maxlength="30" autocomplete="name" placeholder="홍길동">
-  <label class="f" for="phone">휴대폰 번호</label><input type="tel" id="phone" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" maxlength="13">
-  <label class="f" for="memo">요청 사항 (선택)</label><textarea id="memo" maxlength="300" placeholder="예: 스키 2 · 보드 1, 렌탈샵에서 빌린 장비"></textarea>
-  <label class="agree" style="margin-top:14px"><input type="checkbox" id="agree"><span>예약 확인·연락을 위해 성함과 휴대폰 번호를 수집하며, 이용 시즌 종료 후 파기합니다. 동의합니다.</span></label>
- </div>
- <div class="card info"><h2>꼭 확인해 주세요</h2><dl>
-  <div><dt>만나는 곳</dt><dd id="placeB">곤지암 스키하우스 입구 밖 눈사람 인형</dd></div>
-  <div><dt>대기 시간</dt><dd>픽업맨은 최대 30분 기다려요. 늦으시면 직접 반납하셔야 해요.</dd></div>
-  <div><dt>픽업맨이 없을 때</dt><dd>장비(스키·부츠)만 두고 렌탈샵을 방문해 주세요.</dd></div>
-  <div><dt>픽업 문의</dt><dd><a id="telA" href="tel:01039912636">010-3991-2636</a></dd></div></dl></div>
+<!-- 1 날짜·시간 -->
+<section id="s1">
+ <div class="intro"><div><h1>스키장 장비 픽업</h1><p>날짜와 수령·반납 시간을 고르면 1회예요</p></div><div class="price"><b id="pr1">10,000원</b><small>1회</small></div></div>
+ <div class="card"><div class="months" id="months"></div><div class="cal" id="cal"></div>
+  <div class="pick" id="pick" hidden><h3 id="pdate"></h3>
+   <p class="lbl">장비 받는 시간 <span class="hint">· 이 시간부터 30분 기다려요</span></p><div class="grid4" id="picks"></div>
+   <p class="lbl">장비 반납 시간</p><div class="grid4" id="rets"></div>
+   <button class="add" id="add" disabled>이 회차 담기</button></div></div>
+ <div class="card"><h2>선택한 회차</h2><div class="rounds" id="rounds" style="margin-top:10px"></div></div>
 </section>
-
-<section id="doneS" hidden><div class="card done"><h2>예약이 접수됐어요</h2><p class="hint">예약 번호는 내 예약 확인·취소에 필요해요. 이 화면을 캡처해 두세요.</p>
- <div class="code" id="dCode">0000</div><p class="hint">예약 번호</p><div class="rows" id="dRows"></div>
- <div class="note">렌탈팀이 확인하면 '확정'으로 바뀌어요. 당일 픽업맨은 <b id="dPlace"></b>에서 기다립니다.</div>
- <button class="lnk" id="again">다른 날짜 또 예약하기</button></div></section>
-
+<!-- 2 예약자 정보 -->
+<section id="s2" hidden>
+ <div class="card"><h2>예약자 정보</h2>
+  <label class="f" for="name">예약자 성함</label><input type="text" id="name" maxlength="30" autocomplete="name" placeholder="홍길동">
+  <label class="f" for="phone">휴대폰 번호 <span class="hint">· 예약 완료 알림을 보내드려요</span></label><input type="tel" id="phone" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" maxlength="13">
+  <label class="f">강습받는 스키스쿨</label><div class="grid2" id="schools"></div>
+  <label class="f">장비 수</label><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1개</output><button type="button" id="plus" aria-label="늘리기">+</button></div>
+  <label class="f" for="memo">요청 사항 (선택)</label><textarea id="memo" maxlength="300" placeholder="예: 스키 2 · 보드 1, 렌탈샵에서 빌린 장비"></textarea></div>
+</section>
+<!-- 3 확인·결제 -->
+<section id="s3" hidden>
+ <div class="card"><h2>예약 내용</h2><div class="sum" id="sum3" style="margin-top:8px"></div><div class="total"><span>결제 금액</span><b id="tot3"></b></div></div>
+ <div class="card"><h2>유의 사항</h2><div class="notes">
+  <div><i>1</i><span><b>만나는 곳</b> · <span class="place">곤지암 스키하우스 입구 밖 눈사람 인형</span></span></div>
+  <div><i>2</i><span>수령 시간에 픽업맨을 만나 장비를 받아요. <b>픽업맨은 최대 30분 기다려요.</b></span></div>
+  <div><i>3</i><span>반납도 고른 시간에 같은 장소에서 해요. 늦으시면 렌탈샵으로 직접 반납해 주세요.</span></div>
+  <div><i>4</i><span>반납 때 픽업맨이 보이지 않으면 <b>장비(스키·부츠)를 그 자리에 두고 사진을 찍어 남겨 주세요.</b></span></div>
+  <div><i>5</i><span>요금은 <b>회당 <span class="pr">10,000원</span></b>이에요. 예약 변경·취소는 <a class="tel" href="tel:01039912636">010-3991-2636</a>으로 연락 주세요.</span></div></div>
+  <label class="agree"><input type="checkbox" id="agree"><span>유의 사항을 확인했고, 예약 확인·연락을 위한 성함·휴대폰 번호 수집에 동의합니다. (이용 시즌 종료 후 파기)</span></label></div>
+</section>
+<!-- 완료 -->
+<section id="sd" hidden><div class="card done"><h2 id="dTitle">예약이 완료됐어요</h2><p class="hint">예약 번호는 내 예약 확인에 필요해요. 이 화면을 캡처해 두세요.</p>
+ <div class="code" id="dCode"></div><p class="hint">예약 번호</p><div class="sum" id="dSum"></div><a class="lnk" id="dRc" target="_blank" rel="noopener" hidden>카드 영수증 보기</a> <button class="lnk" id="again">다른 날짜 또 예약하기</button></div></section>
+<!-- 내 예약 -->
 <section id="mine" hidden><div class="card"><h2>내 예약 확인</h2><p class="hint">예약할 때 적은 휴대폰 번호와 예약 번호(4자리)를 넣어 주세요</p>
  <label class="f" for="mPhone">휴대폰 번호</label><input type="tel" id="mPhone" inputmode="numeric" placeholder="010-0000-0000" maxlength="13">
  <label class="f" for="mCode">예약 번호</label><input type="text" id="mCode" inputmode="numeric" maxlength="4" placeholder="4자리">
- <button class="go" id="mGo" style="margin-top:14px">확인하기</button><p class="err" id="mErr"></p><div id="mList"></div></div></section>
-
-<p class="foot"><a href="../">세이프키즈 홈으로</a></p>
+ <button class="go" id="mGo" style="width:100%;margin-top:14px">확인하기</button><p class="err" id="mErr" style="margin-top:8px"></p><div id="mList"></div></div></section>
+<p class="foot"><a href="../">세이프키즈 홈으로</a> · 픽업 문의 <a class="tel" href="tel:01039912636">010-3991-2636</a></p>
 </main>
-<div class="bar" id="bar"><div class="bar-in"><p class="sum" id="sum">날짜와 시간을 골라 주세요</p><button class="go" id="send" disabled>픽업 예약하기</button><p class="err" id="err" role="alert"></p></div></div>
+<div class="bar" id="bar"><p class="err" id="err" role="alert"></p><div class="bar-in"><button class="back" id="prev" hidden>이전</button><button class="go" id="next" disabled>다음</button></div></div>
 <script>
 (function(){
  const API='https://zlpjrtjwlafvmwywupvr.supabase.co/functions/v1/safekidz-pickup';
  const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- const qs=new URLSearchParams(location.search),SRC=['arang-book','arang-home'].includes(qs.get('src'))?qs.get('src'):'safekidz';
+ const qs=new URLSearchParams(location.search),SRC=['arang-book','arang-home'].includes(qs.get('src'))?qs.get('src'):(sessionStorage.getItem('skp_src')||'safekidz');try{sessionStorage.setItem('skp_src',SRC)}catch(e){}
  const call=async b=>{const r=await fetch(API,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify(b)});const j=await r.json().catch(()=>({error:'잠시 후 다시 시도해 주세요'}));if(!r.ok||j.error)throw new Error(j.error||'잠시 후 다시 시도해 주세요');return j};
  const fmtPh=v=>String(v).replace(/\D/g,'').slice(0,11).replace(/^(\d{3})(\d{1,4})?(\d{1,4})?$/,(m,a,b,c)=>[a,b,c].filter(Boolean).join('-'));
- const WD='일월화수목금토',dLabel=d=>{const t=new Date(d+'T12:00:00');return `${t.getMonth()+1}월 ${t.getDate()}일 (${WD[t.getDay()]})`};
+ const WD='일월화수목금토',dL=d=>{const t=new Date(d+'T12:00:00');return `${t.getMonth()+1}월 ${t.getDate()}일 (${WD[t.getDay()]})`},won=n=>Number(n).toLocaleString('ko-KR')+'원';
  const plus=(hm,m)=>{const [h,mm]=hm.split(':').map(Number),t=h*60+mm+m;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
- let C=null;const st={date:'',pick:'',ret:'',school:qs.get('school')||'',n:1};
+ const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};let C=null;
+ try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d&&!qs.get('paymentKey'))Object.assign(S,d,{step:1})}catch(e){}
+ const save=()=>{try{sessionStorage.setItem('skp_draft',JSON.stringify({rounds:S.rounds,school:S.school,n:S.n,name:$('#name').value,phone:$('#phone').value,memo:$('#memo').value}))}catch(e){}};
  if(qs.get('phone'))$('#phone').value=$('#mPhone').value=fmtPh(qs.get('phone'));
- const btn=(v,b,s,on,dis)=>`<button type="button" class="opt" data-v="${esc(v)}" aria-pressed="${on}" ${dis?'disabled':''}><b>${esc(b)}</b>${s?`<small>${esc(s)}</small>`:''}</button>`;
- function paint(){if(!C)return;const full=new Set(C.full||[]),wait=C.wait||30;
-  $('#picks').innerHTML=C.pick.map(h=>btn(h,h,`~ ${plus(h,wait)}`,st.pick===h,!st.date||full.has(st.date+'|'+h)||(st.date===C.today&&h<=new Date(Date.now()+30*60e3).toTimeString().slice(0,5)))).join('');
-  $('#rets').innerHTML=C.ret.map(h=>btn(h,h,`~ ${plus(h,wait)}`,st.ret===h,!st.pick||h<=st.pick)).join('');
-  $('#schools').innerHTML=C.schools.map(s=>`<button type="button" class="opt sch" data-v="${esc(s)}" aria-pressed="${st.school===s}">${esc(s)}</button>`).join('');
-  $('#cnt').textContent=st.n+'개';
-  const ok=st.date&&st.pick&&st.ret&&st.school&&$('#name').value.trim()&&/^01\d{8,9}$/.test($('#phone').value.replace(/\D/g,''))&&$('#agree').checked;
-  $('#send').disabled=!ok;$('#sum').innerHTML=st.date?`<b>${dLabel(st.date)}</b>${st.pick?` · <b>${st.pick}</b> 수령`:''}${st.ret?` → <b>${st.ret}</b> 반납`:''} · 장비 ${st.n}개`:'날짜와 시간을 골라 주세요'}
- const pickIn=(sel,key,after)=>$(sel).addEventListener('click',e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;st[key]=b.dataset.v;after&&after();paint()});
- pickIn('#picks','pick',()=>{if(st.ret&&st.ret<=st.pick)st.ret=''});pickIn('#rets','ret');pickIn('#schools','school');
- $('#date').addEventListener('change',e=>{const d=e.target.value;$('#err').textContent='';if(C&&(C.closed||[]).includes(d)){$('#err').textContent='이 날은 픽업 예약을 받지 않아요';st.date='';e.target.value=''}else st.date=d;st.pick='';st.ret='';paint()});
- $('#minus').onclick=()=>{st.n=Math.max(1,st.n-1);paint()};$('#plus').onclick=()=>{st.n=Math.min(20,st.n+1);paint()};
- ['#name','#memo','#agree'].forEach(s=>$(s).addEventListener('input',paint));$('#agree').addEventListener('change',paint);
- ['#phone','#mPhone'].forEach(s=>$(s).addEventListener('input',e=>{e.target.value=fmtPh(e.target.value);paint()}));
- $('#send').onclick=async()=>{const b=$('#send');b.disabled=true;b.textContent='예약하는 중…';$('#err').textContent='';
-  try{const j=await call({action:'create',src:SRC,date:st.date,pick:st.pick,ret:st.ret,school:st.school,people:st.n,name:$('#name').value,phone:$('#phone').value,memo:$('#memo').value});const k=j.booking;
-   $('#dCode').textContent=k.code;$('#dPlace').textContent=C.place;$('#dRows').innerHTML=[['날짜',dLabel(k.date)],['장비 수령',`${k.pick} ~ ${plus(k.pick,C.wait||30)}`],['장비 반납',`${k.ret} ~ ${plus(k.ret,C.wait||30)}`],['스키스쿨',k.school],['장비 수',k.people+'개'],['예약자',k.name]].map(([a,v])=>`<div><span>${a}</span><b>${esc(v)}</b></div>`).join('');
-   try{localStorage.setItem('skp_last',JSON.stringify({phone:k.phone||$('#phone').value,code:k.code}))}catch(e){}
-   $('#book').hidden=true;$('#bar').hidden=true;$('#doneS').hidden=false;scrollTo(0,0);$('#mPhone').value=$('#phone').value;$('#mCode').value=k.code}
-  catch(e){$('#err').textContent=e.message;load()}finally{b.textContent='픽업 예약하기';paint()}};
- $('#again').onclick=()=>{st.pick='';st.ret='';$('#doneS').hidden=true;$('#book').hidden=false;$('#bar').hidden=false;load();scrollTo(0,0)};
- function tab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));$('#book').hidden=t!=='book';$('#bar').hidden=t!=='book';$('#doneS').hidden=true;$('#mine').hidden=t!=='mine'}
+ const ok2=()=>$('#name').value.trim()&&/^01\d{8,9}$/.test($('#phone').value.replace(/\D/g,''))&&S.school&&S.n>=1;
+ function months(){const out=[];let d=new Date(C.from.slice(0,7)+'-01T12:00:00');const end=C.to.slice(0,7);while(true){const k=d.toISOString().slice(0,7);out.push(k);if(k>=end||out.length>6)break;d.setMonth(d.getMonth()+1)}return out}
+ function cal(){const ms=months();if(!S.month||!ms.includes(S.month))S.month=ms[0];
+  $('#months').innerHTML=ms.map(m=>`<button type="button" data-m="${m}" aria-pressed="${m===S.month}">${+m.slice(5)}월</button>`).join('');
+  const f=new Date(S.month+'-01T12:00:00'),days=new Date(f.getFullYear(),f.getMonth()+1,0).getDate(),cnt={};S.rounds.forEach(r=>cnt[r.date]=(cnt[r.date]||0)+1);
+  let h=[...WD].map(w=>`<div class="w">${w}</div>`).join('')+'<div></div>'.repeat(f.getDay());
+  for(let i=1;i<=days;i++){const d=S.month+'-'+String(i).padStart(2,'0'),wd=(f.getDay()+i-1)%7,off=d<C.from||d>C.to||C.closed.includes(d)||(d===C.today&&C.pick.every(p=>p<=C.nowHM));
+   h+=`<button type="button" data-d="${d}" class="${wd===0?'sun':wd===6?'sat':''} ${S.date===d?'sel':''} ${cnt[d]?'has':''}" data-n="${cnt[d]||''}" ${off?'disabled':''}>${i}</button>`}
+  $('#cal').innerHTML=h}
+ function pickPanel(){$('#pick').hidden=!S.date;if(!S.date)return;$('#pdate').textContent=dL(S.date);const full=new Set(C.full),taken=new Set(S.rounds.filter(r=>r.date===S.date).map(r=>r.pick));
+  $('#picks').innerHTML=C.pick.map(h=>{const dis=full.has(S.date+'|'+h)||taken.has(h)||(S.date===C.today&&h<=C.nowHM);return `<button type="button" class="opt" data-v="${h}" aria-pressed="${S.pick===h}" ${dis?'disabled':''}><b>${h}</b><small>${full.has(S.date+'|'+h)?'마감':taken.has(h)?'담음':'~ '+plus(h,C.wait)}</small></button>`}).join('');
+  $('#rets').innerHTML=C.ret.map(h=>`<button type="button" class="opt" data-v="${h}" aria-pressed="${S.ret===h}" ${!S.pick||h<=S.pick?'disabled':''}><b>${h}</b><small>~ ${plus(h,C.wait)}</small></button>`).join('');
+  $('#add').disabled=!(S.pick&&S.ret)}
+ function rounds(){$('#rounds').innerHTML=S.rounds.length?S.rounds.map((r,i)=>`<div class="rd"><i>${i+1}회차</i><div><b>${dL(r.date)}</b><span>${r.pick} 수령 → ${r.ret} 반납</span></div><button type="button" data-del="${i}">빼기</button></div>`).join(''):'<p class="empty">달력에서 날짜를 누르고 시간을 골라 담아 주세요</p>'}
+ function sum3(){$('#sum3').innerHTML=S.rounds.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납</b></div>`).join('')+[['예약자',$('#name').value.trim()],['휴대폰',$('#phone').value],['스키스쿨',S.school],['장비 수',S.n+'개'],...($('#memo').value.trim()?[['요청 사항',$('#memo').value.trim()]]:[])].map(([a,v])=>`<div><span>${a}</span><b>${esc(v)}</b></div>`).join('');$('#tot3').textContent=won(C.price*S.rounds.length)}
+ function bar(){const n=S.rounds.length,t=won(C?C.price*n:0),nx=$('#next');$('#prev').hidden=S.step===1;
+  if(S.step===1){nx.disabled=!n;nx.innerHTML=n?`<small>${n}회 · ${t}</small>다음`:'회차를 담아 주세요'}
+  else if(S.step===2){nx.disabled=!ok2();nx.innerHTML='다음'}
+  else{nx.disabled=!$('#agree').checked;nx.innerHTML=`${t} 결제하기`}}
+ function step(n){S.step=n;['#s1','#s2','#s3'].forEach((s,i)=>$(s).hidden=i+1!==n);$('#sd').hidden=true;$('#mine').hidden=true;$('#bar').hidden=false;$('#steps').hidden=false;
+  document.querySelectorAll('#steps span').forEach(s=>s.className=+s.dataset.s===n?'on':+s.dataset.s<n?'done':'');if(n===3)sum3();if(n===2)paint2();$('#err').textContent='';bar();scrollTo(0,0)}
+ function paint2(){$('#schools').innerHTML=C.schools.map(s=>`<button type="button" class="opt" data-v="${esc(s)}" aria-pressed="${S.school===s}">${esc(s)}</button>`).join('');$('#cnt').textContent=S.n+'개'}
+ function all(){cal();pickPanel();rounds();bar()}
+ $('#months').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;S.month=b.dataset.m;cal()};
+ $('#cal').onclick=e=>{const b=e.target.closest('[data-d]');if(!b||b.disabled)return;S.date=b.dataset.d;S.pick='';S.ret='';cal();pickPanel();$('#pick').scrollIntoView({behavior:'smooth',block:'nearest'})};
+ $('#picks').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.pick=b.dataset.v;if(S.ret&&S.ret<=S.pick)S.ret='';pickPanel()};
+ $('#rets').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.ret=b.dataset.v;pickPanel()};
+ $('#add').onclick=()=>{S.rounds.push({date:S.date,pick:S.pick,ret:S.ret});S.rounds.sort((a,z)=>(a.date+a.pick).localeCompare(z.date+z.pick));S.pick='';S.ret='';save();all()};
+ $('#rounds').onclick=e=>{const b=e.target.closest('[data-del]');if(!b)return;S.rounds.splice(+b.dataset.del,1);save();all()};
+ $('#schools').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;S.school=b.dataset.v;paint2();save();bar()};
+ $('#minus').onclick=()=>{S.n=Math.max(1,S.n-1);paint2();save()};$('#plus').onclick=()=>{S.n=Math.min(20,S.n+1);paint2();save()};
+ ['#name','#memo'].forEach(s=>$(s).addEventListener('input',()=>{save();bar()}));$('#agree').addEventListener('change',bar);
+ ['#phone','#mPhone'].forEach(s=>$(s).addEventListener('input',e=>{e.target.value=fmtPh(e.target.value);save();bar()}));
+ $('#prev').onclick=()=>step(S.step-1);
+ $('#next').onclick=async()=>{if(S.step<3)return step(S.step+1);const nx=$('#next');nx.disabled=true;nx.textContent='결제창 여는 중…';$('#err').textContent='';
+  try{const o=await call({action:'prepare',src:SRC,slots:S.rounds,name:$('#name').value,phone:$('#phone').value,school:S.school,people:S.n,memo:$('#memo').value});save();
+   await new Promise((res,rej)=>{if(window.TossPayments)return res();const s=document.createElement('script');s.src='https://js.tosspayments.com/v2/standard';s.onload=res;s.onerror=()=>rej(new Error('결제창을 불러오지 못했어요 · 새로고침해 주세요'));document.head.appendChild(s)});
+   const back=location.origin+location.pathname;
+   await TossPayments(o.ck).payment({customerKey:TossPayments.ANONYMOUS}).requestPayment({method:'CARD',amount:{currency:'KRW',value:o.amount},orderId:o.orderId,orderName:o.orderName,customerName:o.name,customerMobilePhone:o.phone,successUrl:back+'?pay=ok',failUrl:back+'?pay=fail',card:{useEscrow:false,flowMode:'DEFAULT',useCardPoint:false,useAppCardOnly:false}})}
+  catch(e){$('#err').textContent=e.code==='USER_CANCEL'?'결제를 취소했어요':(e.message||'결제를 진행하지 못했어요');bar()}};
+ async function finish(){step(3);$('#bar').hidden=true;$('#s3').hidden=true;$('#steps').hidden=true;$('#sd').hidden=false;$('#dTitle').textContent='결제를 확인하는 중이에요…';
+  try{const j=await call({action:'confirm',paymentKey:qs.get('paymentKey'),orderId:qs.get('orderId'),amount:+qs.get('amount')});
+   $('#dTitle').innerHTML='예약이 완료됐어요'+(j.test?'<span class="tag">테스트 결제</span>':'');$('#dCode').textContent=j.code;
+   $('#dSum').innerHTML=j.slots.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납</b></div>`).join('')+`<div><span>결제 금액</span><b>${won(j.amount)}</b></div><div><span>만나는 곳</span><b>${esc(C?.place||'')}</b></div>`;
+   if(j.receipt){$('#dRc').href=j.receipt;$('#dRc').hidden=false}
+   try{localStorage.setItem('skp_last',JSON.stringify({phone:$('#phone').value,code:j.code}));sessionStorage.removeItem('skp_draft')}catch(e){}S.rounds=[];
+   $('#mPhone').value=$('#phone').value;$('#mCode').value=j.code;history.replaceState(null,'',location.pathname)}
+  catch(e){$('#dTitle').textContent='결제를 확인하지 못했어요';$('#dSum').innerHTML=`<p class="hint" style="text-align:center">${esc(e.message)}<br>카드가 결제됐다면 픽업 문의 번호로 연락 주세요.</p>`}}
+ $('#again').onclick=()=>{S.date='';S.pick='';S.ret='';step(1);all()};
+ function tab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));if(t==='mine'){['#s1','#s2','#s3','#sd'].forEach(s=>$(s).hidden=true);$('#mine').hidden=false;$('#bar').hidden=true;$('#steps').hidden=true}else step(1)}
  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
- const SL={접수:['접수','',],확정:['확정','ok'],수령완료:['수령 완료','ok'],반납완료:['반납 완료','ok'],취소:['취소','no']};
  async function mine(){$('#mErr').textContent='';try{const j=await call({action:'mine',phone:$('#mPhone').value,code:$('#mCode').value.trim()});
-   $('#mList').innerHTML=j.list.length?j.list.map(k=>{const [t,c]=SL[k.status]||[k.status,''];return `<div class="bk"><div class="h"><b>${dLabel(k.date)}</b><span class="st ${c}">${t}</span></div><p>${k.pick} 수령 → ${k.ret} 반납 · ${esc(k.school)} · 장비 ${k.people}개 · 예약번호 ${esc(k.code)}</p>${['접수','확정'].includes(k.status)&&k.date>=(C?.today||'')?`<button class="lnk" data-cx="${esc(k.id)}">예약 취소</button>`:''}</div>`}).join(''):'<p class="hint" style="margin-top:14px">예약 내역이 없어요</p>'}
+   $('#mList').innerHTML=j.list.length?j.list.map(k=>`<div class="bk"><span class="st">${esc(k.status==='결제완료'?'예약 완료':k.status)}</span><b>${dL(k.date)}</b><p>${k.pick} 수령 → ${k.ret} 반납 · ${esc(k.school)} · 장비 ${k.people}개</p></div>`).join('')+`<p class="hint" style="margin-top:12px">변경·취소는 <a href="tel:${j.tel.replace(/\D/g,'')}">${esc(j.tel)}</a>로 연락 주세요</p>`:'<p class="empty" style="margin-top:12px">다가오는 예약이 없어요</p>'}
   catch(e){$('#mErr').textContent=e.message;$('#mList').innerHTML=''}}
  $('#mGo').onclick=mine;
- $('#mList').addEventListener('click',async e=>{const b=e.target.closest('[data-cx]');if(!b||!confirm('이 픽업 예약을 취소할까요?'))return;try{await call({action:'cancel',phone:$('#mPhone').value,code:$('#mCode').value.trim(),id:b.dataset.cx});mine()}catch(er){$('#mErr').textContent=er.message}});
  try{const l=JSON.parse(localStorage.getItem('skp_last')||'null');if(l&&!$('#mPhone').value){$('#mPhone').value=fmtPh(l.phone);$('#mCode').value=l.code}}catch(e){}
- if(qs.get('tab')==='mine')tab('mine');
- async function load(){try{C=await call({action:'cfg'});const d=$('#date');d.min=C.from;d.max=C.to;
-   ['#placeA','#placeB'].forEach(s=>$(s).textContent=C.place);$('#waitA').textContent=`최대 ${C.wait}분`;$('#feeA').textContent=C.fee;$('#telA').textContent=C.tel;$('#telA').href='tel:'+C.tel.replace(/\D/g,'');
-   if(!C.ready){$('#err').textContent='픽업 예약 준비 중이에요 · 매장으로 문의해 주세요'}paint()}catch(e){$('#err').textContent='예약 정보를 불러오지 못했어요 · 새로고침해 주세요'}}
- load();
+ (async function(){try{C=await call({action:'cfg'});
+   document.querySelectorAll('.place').forEach(e=>e.textContent=C.place);document.querySelectorAll('.pr').forEach(e=>e.textContent=won(C.price));$('#pr1').textContent=won(C.price);
+   document.querySelectorAll('a.tel').forEach(a=>{a.textContent=C.tel;a.href='tel:'+C.tel.replace(/\D/g,'')});
+   try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d){$('#name').value=d.name||'';if(d.phone)$('#phone').value=d.phone;$('#memo').value=d.memo||''}}catch(e){}
+   S.rounds=S.rounds.filter(r=>r.date>=C.from&&r.date<=C.to);
+   if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();
+   if(qs.get('pay')==='fail'){history.replaceState(null,'',location.pathname);step(3);$('#err').textContent=qs.get('message')||'결제가 완료되지 않았어요';return}
+   if(qs.get('tab')==='mine')return tab('mine');
+   step(1);all()}catch(e){$('#err').textContent='예약 정보를 불러오지 못했어요 · 새로고침해 주세요'}})();
 })();
 </script>
 </body>
