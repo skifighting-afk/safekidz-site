@@ -60,7 +60,8 @@ main{max-width:640px;margin:0 auto;padding:16px 16px 140px}
 input[type=text],input[type=tel],textarea{width:100%;font:600 16px/1.4 var(--sans);color:var(--ink);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none}
 input:focus,textarea:focus{border-color:var(--pink)}textarea{min-height:72px;resize:vertical;font-weight:500;font-size:15px}
 label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14px 0 6px}label.f:first-of-type{margin-top:4px}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:6px}.grid2 .opt{padding:13px 4px;font-weight:800;font-size:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.grid3 .opt{padding:13px 2px;font-weight:800;font-size:13.5px}
+.stepper{display:flex;align-items:center;justify-content:space-between;gap:12px}.stepper b{font:900 18px/1 var(--sans);color:var(--pink-d)}
 .step{display:flex;align-items:center;border:1.5px solid var(--line);border-radius:12px;overflow:hidden;width:max-content;background:#fff}
 .step button{border:0;background:#fff;width:48px;height:46px;font-size:22px;font-weight:700;cursor:pointer;color:var(--pink)}
 .step output{min-width:64px;text-align:center;font:900 19px/1 var(--sans)}
@@ -96,11 +97,12 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
 <main>
 <!-- 1 날짜·시간 -->
 <section id="s1">
- <div class="intro"><div><h1>스키장 장비 픽업</h1><p>날짜와 수령·반납 시간을 고르면 1회예요</p></div><div class="price"><b id="pr1">10,000원</b><small>1회</small></div></div>
+ <div class="intro"><div><h1>스키장 장비 픽업</h1><p>날짜 · 받는 시간 · 반납 시간 · 장비 대수를 고르면 1회차예요</p></div><div class="price"><b id="pr1">10,000원</b><small>장비 1대</small></div></div>
  <div class="card"><div class="months" id="months"></div><div class="cal" id="cal"></div>
   <div class="pick" id="pick" hidden><h3 id="pdate"></h3>
    <p class="lbl">장비 받는 시간 <span class="hint">· 이 시간부터 30분 기다려요</span></p><div class="grid4" id="picks"></div>
    <p class="lbl">장비 반납 시간</p><div class="grid4" id="rets"></div>
+   <p class="lbl">픽업 장비 대수 <span class="hint">· 한 사람 장비 = 1대</span></p><div class="stepper"><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1대</output><button type="button" id="plus" aria-label="늘리기">+</button></div><b id="rprice">10,000원</b></div>
    <button class="add" id="add" disabled>이 회차 담기</button></div></div>
  <div class="card"><h2>선택한 회차</h2><div class="rounds" id="rounds" style="margin-top:10px"></div></div>
 </section>
@@ -109,8 +111,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  <div class="card"><h2>예약자 정보</h2>
   <label class="f" for="name">예약자 성함</label><input type="text" id="name" maxlength="30" autocomplete="name" placeholder="홍길동">
   <label class="f" for="phone">휴대폰 번호 <span class="hint">· 예약 완료 알림을 보내드려요</span></label><input type="tel" id="phone" inputmode="numeric" autocomplete="tel" placeholder="010-0000-0000" maxlength="13">
-  <label class="f">강습받는 스키스쿨</label><div class="grid2" id="schools"></div>
-  <label class="f">장비 수</label><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1개</output><button type="button" id="plus" aria-label="늘리기">+</button></div>
+  <label class="f">강습받는 입점 스키스쿨</label><div class="grid3" id="schools"></div>
   <label class="f" for="memo">요청 사항 (선택)</label><textarea id="memo" maxlength="300" placeholder="예: 스키 2 · 보드 1, 렌탈샵에서 빌린 장비"></textarea></div>
 </section>
 <!-- 3 확인·결제 -->
@@ -121,7 +122,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
   <div><i>2</i><span>수령 시간에 픽업맨을 만나 장비를 받아요. <b>픽업맨은 최대 30분 기다려요.</b></span></div>
   <div><i>3</i><span>반납도 고른 시간에 같은 장소에서 해요. 늦으시면 렌탈샵으로 직접 반납해 주세요.</span></div>
   <div><i>4</i><span>반납 때 픽업맨이 보이지 않으면 <b>장비(스키·부츠)를 그 자리에 두고 사진을 찍어 남겨 주세요.</b></span></div>
-  <div><i>5</i><span>요금은 <b>회당 <span class="pr">10,000원</span></b>이에요. 예약 변경·취소는 <a class="tel" href="tel:01039912636">010-3991-2636</a>으로 연락 주세요.</span></div></div>
+  <div><i>5</i><span>요금은 <b>장비 1대당 <span class="pr">10,000원</span></b>이에요 (회차마다). 예약 변경·취소는 <a class="tel" href="tel:01039912636">010-3991-2636</a>으로 연락 주세요.</span></div></div>
   <label class="agree"><input type="checkbox" id="agree"><span>유의 사항을 확인했고, 예약 확인·연락을 위한 성함·휴대폰 번호 수집에 동의합니다. (이용 시즌 종료 후 파기)</span></label></div>
 </section>
 <!-- 완료 -->
@@ -144,11 +145,11 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  const fmtPh=v=>String(v).replace(/\D/g,'').slice(0,11).replace(/^(\d{3})(\d{1,4})?(\d{1,4})?$/,(m,a,b,c)=>[a,b,c].filter(Boolean).join('-'));
  const WD='일월화수목금토',dL=d=>{const t=new Date(d+'T12:00:00');return `${t.getMonth()+1}월 ${t.getDate()}일 (${WD[t.getDay()]})`},won=n=>Number(n).toLocaleString('ko-KR')+'원';
  const plus=(hm,m)=>{const [h,mm]=hm.split(':').map(Number),t=h*60+mm+m;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
- const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};let C=null;
+ const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};const qty=()=>S.rounds.reduce((a,r)=>a+(+r.n||1),0);let C=null;
  try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d&&!qs.get('paymentKey'))Object.assign(S,d,{step:1})}catch(e){}
  const save=()=>{try{sessionStorage.setItem('skp_draft',JSON.stringify({rounds:S.rounds,school:S.school,n:S.n,name:$('#name').value,phone:$('#phone').value,memo:$('#memo').value}))}catch(e){}};
  if(qs.get('phone'))$('#phone').value=$('#mPhone').value=fmtPh(qs.get('phone'));
- const ok2=()=>$('#name').value.trim()&&/^01\d{8,9}$/.test($('#phone').value.replace(/\D/g,''))&&S.school&&S.n>=1;
+ const ok2=()=>$('#name').value.trim()&&/^01\d{8,9}$/.test($('#phone').value.replace(/\D/g,''))&&C.schools.includes(S.school);
  function months(){const out=[];let d=new Date(C.from.slice(0,7)+'-01T12:00:00');const end=C.to.slice(0,7);while(true){const k=d.toISOString().slice(0,7);out.push(k);if(k>=end||out.length>6)break;d.setMonth(d.getMonth()+1)}return out}
  function cal(){const ms=months();if(!S.month||!ms.includes(S.month))S.month=ms[0];
   $('#months').innerHTML=ms.map(m=>`<button type="button" data-m="${m}" aria-pressed="${m===S.month}">${+m.slice(5)}월</button>`).join('');
@@ -160,30 +161,30 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  function pickPanel(){$('#pick').hidden=!S.date;if(!S.date)return;$('#pdate').textContent=dL(S.date);const full=new Set(C.full),taken=new Set(S.rounds.filter(r=>r.date===S.date).map(r=>r.pick));
   $('#picks').innerHTML=C.pick.map(h=>{const dis=full.has(S.date+'|'+h)||taken.has(h)||(S.date===C.today&&h<=C.nowHM);return `<button type="button" class="opt" data-v="${h}" aria-pressed="${S.pick===h}" ${dis?'disabled':''}><b>${h}</b><small>${full.has(S.date+'|'+h)?'마감':taken.has(h)?'담음':'~ '+plus(h,C.wait)}</small></button>`}).join('');
   $('#rets').innerHTML=C.ret.map(h=>`<button type="button" class="opt" data-v="${h}" aria-pressed="${S.ret===h}" ${!S.pick||h<=S.pick?'disabled':''}><b>${h}</b><small>~ ${plus(h,C.wait)}</small></button>`).join('');
-  $('#add').disabled=!(S.pick&&S.ret)}
- function rounds(){$('#rounds').innerHTML=S.rounds.length?S.rounds.map((r,i)=>`<div class="rd"><i>${i+1}회차</i><div><b>${dL(r.date)}</b><span>${r.pick} 수령 → ${r.ret} 반납</span></div><button type="button" data-del="${i}">빼기</button></div>`).join(''):'<p class="empty">달력에서 날짜를 누르고 시간을 골라 담아 주세요</p>'}
- function sum3(){$('#sum3').innerHTML=S.rounds.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납</b></div>`).join('')+[['예약자',$('#name').value.trim()],['휴대폰',$('#phone').value],['스키스쿨',S.school],['장비 수',S.n+'개'],...($('#memo').value.trim()?[['요청 사항',$('#memo').value.trim()]]:[])].map(([a,v])=>`<div><span>${a}</span><b>${esc(v)}</b></div>`).join('');$('#tot3').textContent=won(C.price*S.rounds.length)}
- function bar(){const n=S.rounds.length,t=won(C?C.price*n:0),nx=$('#next');$('#prev').hidden=S.step===1;
-  if(S.step===1){nx.disabled=!n;nx.innerHTML=n?`<small>${n}회 · ${t}</small>다음`:'회차를 담아 주세요'}
+  $('#add').disabled=!(S.pick&&S.ret);$('#cnt').textContent=S.n+'대';$('#rprice').textContent=won(C.price*S.n)}
+ function rounds(){$('#rounds').innerHTML=S.rounds.length?S.rounds.map((r,i)=>`<div class="rd"><i>${i+1}회차</i><div><b>${dL(r.date)}</b><span>${r.pick} 수령 → ${r.ret} 반납 · 장비 ${r.n||1}대 · ${won(C.price*(r.n||1))}</span></div><button type="button" data-del="${i}">빼기</button></div>`).join(''):'<p class="empty">달력에서 날짜를 누르고 시간을 골라 담아 주세요</p>'}
+ function sum3(){$('#sum3').innerHTML=S.rounds.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납<br>장비 ${r.n||1}대 · ${won(C.price*(r.n||1))}</b></div>`).join('')+[['예약자',$('#name').value.trim()],['휴대폰',$('#phone').value],['스키스쿨',S.school],...($('#memo').value.trim()?[['요청 사항',$('#memo').value.trim()]]:[])].map(([a,v])=>`<div><span>${a}</span><b>${esc(v)}</b></div>`).join('');$('#tot3').textContent=won(C.price*qty())}
+ function bar(){const n=S.rounds.length,t=won(C?C.price*qty():0),nx=$('#next');$('#prev').hidden=S.step===1;
+  if(S.step===1){nx.disabled=!n;nx.innerHTML=n?`<small>${n}회차 · 장비 ${qty()}대 · ${t}</small>다음`:'회차를 담아 주세요'}
   else if(S.step===2){nx.disabled=!ok2();nx.innerHTML='다음'}
   else{nx.disabled=!$('#agree').checked;nx.innerHTML=`${t} 결제하기`}}
  function step(n){S.step=n;['#s1','#s2','#s3'].forEach((s,i)=>$(s).hidden=i+1!==n);$('#sd').hidden=true;$('#mine').hidden=true;$('#bar').hidden=false;$('#steps').hidden=false;
   document.querySelectorAll('#steps span').forEach(s=>s.className=+s.dataset.s===n?'on':+s.dataset.s<n?'done':'');if(n===3)sum3();if(n===2)paint2();$('#err').textContent='';bar();scrollTo(0,0)}
- function paint2(){$('#schools').innerHTML=C.schools.map(s=>`<button type="button" class="opt" data-v="${esc(s)}" aria-pressed="${S.school===s}">${esc(s)}</button>`).join('');$('#cnt').textContent=S.n+'개'}
+ function paint2(){$('#schools').innerHTML=C.schools.map(s=>`<button type="button" class="opt" data-v="${esc(s)}" aria-pressed="${S.school===s}">${esc(s)}</button>`).join('')}
  function all(){cal();pickPanel();rounds();bar()}
  $('#months').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;S.month=b.dataset.m;cal()};
  $('#cal').onclick=e=>{const b=e.target.closest('[data-d]');if(!b||b.disabled)return;S.date=b.dataset.d;S.pick='';S.ret='';cal();pickPanel();$('#pick').scrollIntoView({behavior:'smooth',block:'nearest'})};
  $('#picks').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.pick=b.dataset.v;if(S.ret&&S.ret<=S.pick)S.ret='';pickPanel()};
  $('#rets').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.ret=b.dataset.v;pickPanel()};
- $('#add').onclick=()=>{S.rounds.push({date:S.date,pick:S.pick,ret:S.ret});S.rounds.sort((a,z)=>(a.date+a.pick).localeCompare(z.date+z.pick));S.pick='';S.ret='';save();all()};
+ $('#add').onclick=()=>{S.rounds.push({date:S.date,pick:S.pick,ret:S.ret,n:S.n});S.rounds.sort((a,z)=>(a.date+a.pick).localeCompare(z.date+z.pick));S.pick='';S.ret='';save();all()};
  $('#rounds').onclick=e=>{const b=e.target.closest('[data-del]');if(!b)return;S.rounds.splice(+b.dataset.del,1);save();all()};
  $('#schools').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;S.school=b.dataset.v;paint2();save();bar()};
- $('#minus').onclick=()=>{S.n=Math.max(1,S.n-1);paint2();save()};$('#plus').onclick=()=>{S.n=Math.min(20,S.n+1);paint2();save()};
+ $('#minus').onclick=()=>{S.n=Math.max(1,S.n-1);pickPanel()};$('#plus').onclick=()=>{S.n=Math.min(20,S.n+1);pickPanel()};
  ['#name','#memo'].forEach(s=>$(s).addEventListener('input',()=>{save();bar()}));$('#agree').addEventListener('change',bar);
  ['#phone','#mPhone'].forEach(s=>$(s).addEventListener('input',e=>{e.target.value=fmtPh(e.target.value);save();bar()}));
  $('#prev').onclick=()=>step(S.step-1);
  $('#next').onclick=async()=>{if(S.step<3)return step(S.step+1);const nx=$('#next');nx.disabled=true;nx.textContent='결제창 여는 중…';$('#err').textContent='';
-  try{const o=await call({action:'prepare',src:SRC,slots:S.rounds,name:$('#name').value,phone:$('#phone').value,school:S.school,people:S.n,memo:$('#memo').value});save();
+  try{const o=await call({action:'prepare',src:SRC,slots:S.rounds,name:$('#name').value,phone:$('#phone').value,school:S.school,memo:$('#memo').value});save();
    await new Promise((res,rej)=>{if(window.TossPayments)return res();const s=document.createElement('script');s.src='https://js.tosspayments.com/v2/standard';s.onload=res;s.onerror=()=>rej(new Error('결제창을 불러오지 못했어요 · 새로고침해 주세요'));document.head.appendChild(s)});
    const back=location.origin+location.pathname;
    await TossPayments(o.ck).payment({customerKey:TossPayments.ANONYMOUS}).requestPayment({method:'CARD',amount:{currency:'KRW',value:o.amount},orderId:o.orderId,orderName:o.orderName,customerName:o.name,customerMobilePhone:o.phone,successUrl:back+'?pay=ok',failUrl:back+'?pay=fail',card:{useEscrow:false,flowMode:'DEFAULT',useCardPoint:false,useAppCardOnly:false}})}
@@ -191,7 +192,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  async function finish(){step(3);$('#bar').hidden=true;$('#s3').hidden=true;$('#steps').hidden=true;$('#sd').hidden=false;$('#dTitle').textContent='결제를 확인하는 중이에요…';
   try{const j=await call({action:'confirm',paymentKey:qs.get('paymentKey'),orderId:qs.get('orderId'),amount:+qs.get('amount')});
    $('#dTitle').innerHTML='예약이 완료됐어요'+(j.test?'<span class="tag">테스트 결제</span>':'');$('#dCode').textContent=j.code;
-   $('#dSum').innerHTML=j.slots.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납</b></div>`).join('')+`<div><span>결제 금액</span><b>${won(j.amount)}</b></div><div><span>만나는 곳</span><b>${esc(C?.place||'')}</b></div>`;
+   $('#dSum').innerHTML=j.slots.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납 · 장비 ${r.n||1}대</b></div>`).join('')+`<div><span>결제 금액</span><b>${won(j.amount)}</b></div><div><span>만나는 곳</span><b>${esc(C?.place||'')}</b></div>`;
    if(j.receipt){$('#dRc').href=j.receipt;$('#dRc').hidden=false}
    try{localStorage.setItem('skp_last',JSON.stringify({phone:$('#phone').value,code:j.code}));sessionStorage.removeItem('skp_draft')}catch(e){}S.rounds=[];
    $('#mPhone').value=$('#phone').value;$('#mCode').value=j.code;history.replaceState(null,'',location.pathname)}
@@ -200,7 +201,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  function tab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));if(t==='mine'){['#s1','#s2','#s3','#sd'].forEach(s=>$(s).hidden=true);$('#mine').hidden=false;$('#bar').hidden=true;$('#steps').hidden=true}else step(1)}
  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
  async function mine(){$('#mErr').textContent='';try{const j=await call({action:'mine',phone:$('#mPhone').value,code:$('#mCode').value.trim()});
-   $('#mList').innerHTML=j.list.length?j.list.map(k=>`<div class="bk"><span class="st">${esc(k.status==='결제완료'?'예약 완료':k.status)}</span><b>${dL(k.date)}</b><p>${k.pick} 수령 → ${k.ret} 반납 · ${esc(k.school)} · 장비 ${k.people}개</p></div>`).join('')+`<p class="hint" style="margin-top:12px">변경·취소는 <a href="tel:${j.tel.replace(/\D/g,'')}">${esc(j.tel)}</a>로 연락 주세요</p>`:'<p class="empty" style="margin-top:12px">다가오는 예약이 없어요</p>'}
+   $('#mList').innerHTML=j.list.length?j.list.map(k=>`<div class="bk"><span class="st">${esc(k.status==='결제완료'?'예약 완료':k.status)}</span><b>${dL(k.date)}</b><p>${k.pick} 수령 → ${k.ret} 반납 · ${esc(k.school)} · 장비 ${k.people}대</p></div>`).join('')+`<p class="hint" style="margin-top:12px">변경·취소는 <a href="tel:${j.tel.replace(/\D/g,'')}">${esc(j.tel)}</a>로 연락 주세요</p>`:'<p class="empty" style="margin-top:12px">다가오는 예약이 없어요</p>'}
   catch(e){$('#mErr').textContent=e.message;$('#mList').innerHTML=''}}
  $('#mGo').onclick=mine;
  try{const l=JSON.parse(localStorage.getItem('skp_last')||'null');if(l&&!$('#mPhone').value){$('#mPhone').value=fmtPh(l.phone);$('#mCode').value=l.code}}catch(e){}
@@ -208,7 +209,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
    document.querySelectorAll('.place').forEach(e=>e.textContent=C.place);document.querySelectorAll('.pr').forEach(e=>e.textContent=won(C.price));$('#pr1').textContent=won(C.price);
    document.querySelectorAll('a.tel').forEach(a=>{a.textContent=C.tel;a.href='tel:'+C.tel.replace(/\D/g,'')});
    try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d){$('#name').value=d.name||'';if(d.phone)$('#phone').value=d.phone;$('#memo').value=d.memo||''}}catch(e){}
-   S.rounds=S.rounds.filter(r=>r.date>=C.from&&r.date<=C.to);
+   S.rounds=S.rounds.filter(r=>r.date>=C.from&&r.date<=C.to);if(!C.schools.includes(S.school))S.school='';
    if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();
    if(qs.get('pay')==='fail'){history.replaceState(null,'',location.pathname);step(3);$('#err').textContent=qs.get('message')||'결제가 완료되지 않았어요';return}
    if(qs.get('tab')==='mine')return tab('mine');
