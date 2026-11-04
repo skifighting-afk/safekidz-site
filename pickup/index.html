@@ -32,15 +32,15 @@ main{max-width:640px;margin:0 auto;padding:16px 16px 140px}
 .intro h1{font:900 24px/1.25 var(--sans);letter-spacing:-.04em}.intro p{font-size:13px;color:var(--sub);margin-top:4px}
 .price{text-align:right;flex:none}.price b{display:block;font:900 22px/1 var(--sans);color:var(--pink-d)}.price small{font-size:12px;color:var(--sub)}
 .months{display:flex;gap:6px;margin:4px 0 12px}
-.months button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:10px;padding:9px 0;font-weight:800;font-size:15px;cursor:pointer}
+.months button{flex:1;border:1.5px solid var(--line);background:#fff;border-radius:12px;padding:12px 0;font-weight:900;font-size:16px;cursor:pointer}
 .months button[aria-pressed=true]{border-color:var(--ink);background:var(--ink);color:#fff}
-.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;text-align:center}
-.cal .w{font:700 12px/1 var(--sans);color:var(--sub);padding:6px 0}.cal .w:first-child{color:#e0306e}.cal .w:last-child{color:#3b6fd8}
-.cal button{position:relative;aspect-ratio:1;border:0;border-radius:10px;background:#f8f3f6;font:700 15px/1 var(--sans);cursor:pointer}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;min-height:300px}
+.cal .w{font:800 13px/1 var(--sans);color:var(--sub);padding:8px 0}.cal .w:first-child{color:#e0306e}.cal .w:last-child{color:#3b6fd8}
+.cal button{position:relative;aspect-ratio:1;min-height:44px;border:0;border-radius:12px;background:#f8f3f6;font:800 17px/1 var(--sans);cursor:pointer;transition:background .15s,transform .15s}.cal button:not(:disabled):hover{background:#ffe3ee}.cal button:not(:disabled):active{transform:scale(.95)}
 .cal button:disabled{background:none;color:#cfc6d6;cursor:default}
 .cal button.sun{color:#e0306e}.cal button.sat{color:#3b6fd8}
 .cal button.sel{background:var(--pink);color:#fff}
-.cal button.has::after{content:attr(data-n);position:absolute;right:3px;top:3px;min-width:15px;height:15px;padding:0 3px;border-radius:5px;background:var(--ink);color:#fff;font:800 10px/15px var(--sans)}
+.cal button.has::after{content:attr(data-n);position:absolute;right:4px;top:4px;min-width:17px;height:17px;padding:0 4px;border-radius:6px;background:var(--ink);color:#fff;font:800 11px/17px var(--sans)}
 .cal button.sel.has::after{background:#fff;color:var(--pink-d)}
 .pick{margin-top:14px;padding-top:14px;border-top:1px dashed var(--line)}
 .pick h3{font:900 16px/1.3 var(--sans);margin-bottom:10px}
@@ -87,7 +87,8 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
 .tag{display:inline-block;padding:4px 8px;border-radius:6px;background:#fff3d6;color:#8a5a00;font:800 11px/1 var(--sans);margin-left:6px;vertical-align:middle}
 .foot{text-align:center;font-size:13px;color:var(--sub);margin-top:18px}.foot a{font-weight:800;color:var(--pink-d);text-decoration:none}
 [hidden]{display:none!important}
-@media(min-width:700px){.cal button{aspect-ratio:auto;height:50px}}
+@media(min-width:700px){.cal{gap:8px}.cal button{aspect-ratio:auto;height:68px;font-size:20px}.months button{padding:14px 0;font-size:18px}}
+.cal .ld{grid-column:1/-1;padding:40px 0;color:var(--sub);font-weight:700}
 @media(max-width:380px){.grid4{grid-template-columns:1fr 1fr}.intro h1{font-size:21px}}
 </style>
 </head>
@@ -146,7 +147,8 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  const fmtPh=v=>String(v).replace(/\D/g,'').slice(0,11).replace(/^(\d{3})(\d{1,4})?(\d{1,4})?$/,(m,a,b,c)=>[a,b,c].filter(Boolean).join('-'));
  const WD='일월화수목금토',dL=d=>{const t=new Date(d+'T12:00:00');return `${t.getMonth()+1}월 ${t.getDate()}일 (${WD[t.getDay()]})`},won=n=>Number(n).toLocaleString('ko-KR')+'원';
  const plus=(hm,m)=>{const [h,mm]=hm.split(':').map(Number),t=h*60+mm+m;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
- const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};const qty=()=>S.rounds.reduce((a,r)=>a+(+r.n||1),0);let C=null;
+ const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};const qty=()=>S.rounds.reduce((a,r)=>a+(+r.n||1),0);const T0=new Date(Date.now()+9*36e5).toISOString(),Y=+T0.slice(0,4),SY=+T0.slice(5,7)>=4?Y:Y-1,TD=T0.slice(0,10);
+ let C={today:TD,nowHM:T0.slice(11,16),from:TD>SY+'-12-01'?TD:SY+'-12-01',to:(SY+1)+'-03-08',pick:['08:20','10:30','13:20','15:30'],ret:['11:00','13:10','16:00','18:10'],wait:30,place:'곤지암 스키하우스 입구 밖 눈사람 인형',price:10000,tel:'010-3991-2636',closed:[],full:[],schools:['아랑스키스쿨','라온스키스쿨','스키즈스키스쿨'],fallback:1};
  try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d&&!qs.get('paymentKey'))Object.assign(S,d,{step:1})}catch(e){}
  const save=()=>{try{sessionStorage.setItem('skp_draft',JSON.stringify({rounds:S.rounds,school:S.school,n:S.n,name:$('#name').value,phone:$('#phone').value,memo:$('#memo').value}))}catch(e){}};
  if(qs.get('phone'))$('#phone').value=$('#mPhone').value=fmtPh(qs.get('phone'));
@@ -199,14 +201,16 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
    $('#mPhone').value=$('#phone').value;$('#mCode').value=j.code;history.replaceState(null,'',location.pathname)}
   catch(e){$('#dTitle').textContent='결제를 확인하지 못했어요';$('#dSum').innerHTML=`<p class="hint" style="text-align:center">${esc(e.message)}<br>카드가 결제됐다면 픽업 문의 번호로 연락 주세요.</p>`}}
  $('#again').onclick=()=>{S.date='';S.pick='';S.ret='';step(1);all()};
- function tab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));if(t==='mine'){['#s1','#s2','#s3','#sd'].forEach(s=>$(s).hidden=true);$('#mine').hidden=false;$('#bar').hidden=true;$('#steps').hidden=true}else step(1)}
+ function tab(t){document.querySelectorAll('[data-tab]').forEach(b=>b.setAttribute('aria-selected',b.dataset.tab===t));if(t==='mine'){['#s1','#s2','#s3','#sd'].forEach(s=>$(s).hidden=true);$('#mine').hidden=false;$('#bar').hidden=true;$('#steps').hidden=true}else{step(1);all()}}
  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>tab(b.dataset.tab));
  async function mine(){$('#mErr').textContent='';try{const j=await call({action:'mine',phone:$('#mPhone').value,code:$('#mCode').value.trim()});
    $('#mList').innerHTML=j.list.length?j.list.map(k=>`<div class="bk"><span class="st">${esc(k.status==='결제완료'?'예약 완료':k.status)}</span><b>${dL(k.date)}</b><p>${k.pick} 수령 → ${k.ret} 반납 · ${esc(k.school)} · 장비 ${k.people}대</p></div>`).join('')+`<p class="hint" style="margin-top:12px">변경·취소는 <a href="tel:${j.tel.replace(/\D/g,'')}">${esc(j.tel)}</a>로 연락 주세요</p>`:'<p class="empty" style="margin-top:12px">다가오는 예약이 없어요</p>'}
   catch(e){$('#mErr').textContent=e.message;$('#mList').innerHTML=''}}
  $('#mGo').onclick=mine;
  try{const l=JSON.parse(localStorage.getItem('skp_last')||'null');if(l&&!$('#mPhone').value){$('#mPhone').value=fmtPh(l.phone);$('#mCode').value=l.code}}catch(e){}
- (async function(){try{C=await call({action:'cfg'});
+ all();
+ const getCfg=async()=>{for(let i=0;;i++){try{return await call({action:'cfg'})}catch(e){if(i>=4)throw e;await new Promise(r=>setTimeout(r,800*(i+1)))}}};
+ (async function(){try{C=await getCfg();
    document.querySelectorAll('.place').forEach(e=>e.textContent=C.place);document.querySelectorAll('.pr').forEach(e=>e.textContent=won(C.price));$('#pr1').textContent=won(C.price);
    document.querySelectorAll('a.tel').forEach(a=>{a.textContent=C.tel;a.href='tel:'+C.tel.replace(/\D/g,'')});
    try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d){$('#name').value=d.name||'';if(d.phone)$('#phone').value=d.phone;$('#memo').value=d.memo||''}}catch(e){}
@@ -214,7 +218,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
    if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();
    if(qs.get('pay')==='fail'){history.replaceState(null,'',location.pathname);step(3);$('#err').textContent=qs.get('message')||'결제가 완료되지 않았어요';return}
    if(qs.get('tab')==='mine')return tab('mine');
-   step(1);all()}catch(e){$('#err').textContent='예약 정보를 불러오지 못했어요 · 새로고침해 주세요'}})();
+   step(1);all()}catch(e){if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();step(1);all()}})();
 })();
 </script>
 </body>
