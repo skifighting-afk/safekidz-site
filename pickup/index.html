@@ -55,7 +55,8 @@ main{max-width:640px;margin:0 auto;padding:16px 16px 140px}
 .rd{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:12px;padding:12px 12px 12px 14px;border-radius:12px;background:var(--pink-s)}
 .rd i{font:900 13px/1 var(--sans);font-style:normal;color:var(--pink-d)}
 .rd b{display:block;font:900 15px/1.3 var(--sans)}.rd span{font-size:13px;color:var(--sub)}
-.rd button{border:0;background:#fff;border-radius:8px;padding:7px 10px;font-weight:800;font-size:12px;color:var(--sub);cursor:pointer}
+.rq{grid-column:2/-1;display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:-2px}.rq .step button{width:40px;height:36px;font-size:19px}.rq .step button:disabled{color:#d8cfdc;cursor:default}.rq .step output{min-width:52px;font-size:16px}.rq em{font-style:normal;font:900 15px/1 var(--sans);color:var(--pink-d)}
+.rd>button{border:0;background:#fff;border-radius:8px;padding:7px 10px;font-weight:800;font-size:12px;color:var(--sub);cursor:pointer}
 .empty{font-size:14px;color:var(--sub);text-align:center;padding:10px 0}
 input[type=text],input[type=tel],textarea{width:100%;font:600 16px/1.4 var(--sans);color:var(--ink);padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff;outline:none}
 input:focus,textarea:focus{border-color:var(--pink)}textarea{min-height:72px;resize:vertical;font-weight:500;font-size:15px}
@@ -106,9 +107,9 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
   <div class="pick" id="pick" hidden><h3 id="pdate"></h3>
    <p class="lbl">장비 받는 시간 <span class="hint">· 이 시간부터 30분 기다려요</span></p><div class="grid4" id="picks"></div>
    <p class="lbl">장비 반납 시간</p><div class="grid4" id="rets"></div>
-   <p class="lbl">픽업 장비 대수 <span class="hint">· 한 사람 장비 = 1대</span></p><div class="stepper"><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1대</output><button type="button" id="plus" aria-label="늘리기">+</button></div><b id="rprice">10,000원</b></div>
+   <p class="lbl">픽업 장비 대수 <span class="hint">· 한 사람 장비 = 1대 · 다음 회차에도 같은 대수로 담겨요</span></p><div class="stepper"><div class="step"><button type="button" id="minus" aria-label="줄이기">−</button><output id="cnt">1대</output><button type="button" id="plus" aria-label="늘리기">+</button></div><b id="rprice">10,000원</b></div>
    <button class="add" id="add" disabled>이 회차 담기</button></div></div>
- <div class="card"><h2>선택한 회차</h2><div class="rounds" id="rounds" style="margin-top:10px"></div></div>
+ <div class="card"><h2>선택한 회차</h2><p class="hint">회차마다 장비 대수를 따로 바꿀 수 있어요</p><div class="rounds" id="rounds" style="margin-top:10px"></div></div>
 </section>
 <!-- 2 예약자 정보 -->
 <section id="s2" hidden>
@@ -162,7 +163,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
   $('#picks').innerHTML=C.pick.map(h=>{const dis=full.has(S.date+'|'+h)||taken.has(h)||(S.date===C.today&&h<=C.nowHM);return `<button type="button" class="opt" data-v="${h}" aria-pressed="${S.pick===h}" ${dis?'disabled':''}><b>${h}</b><small>${full.has(S.date+'|'+h)?'마감':taken.has(h)?'담음':'~ '+plus(h,C.wait)}</small></button>`}).join('');
   $('#rets').innerHTML=C.ret.map(h=>`<button type="button" class="opt" data-v="${h}" aria-pressed="${S.ret===h}" ${!S.pick||h<=S.pick?'disabled':''}><b>${h}</b><small>~ ${plus(h,C.wait)}</small></button>`).join('');
   $('#add').disabled=!(S.pick&&S.ret);$('#cnt').textContent=S.n+'대';$('#rprice').textContent=won(C.price*S.n)}
- function rounds(){$('#rounds').innerHTML=S.rounds.length?S.rounds.map((r,i)=>`<div class="rd"><i>${i+1}회차</i><div><b>${dL(r.date)}</b><span>${r.pick} 수령 → ${r.ret} 반납 · 장비 ${r.n||1}대 · ${won(C.price*(r.n||1))}</span></div><button type="button" data-del="${i}">빼기</button></div>`).join(''):'<p class="empty">달력에서 날짜를 누르고 시간을 골라 담아 주세요</p>'}
+ function rounds(){$('#rounds').innerHTML=S.rounds.length?S.rounds.map((r,i)=>`<div class="rd"><i>${i+1}회차</i><div><b>${dL(r.date)}</b><span>${r.pick} 수령 → ${r.ret} 반납</span></div><button type="button" data-del="${i}">빼기</button><div class="rq"><div class="step"><button type="button" data-dn="${i}" aria-label="${i+1}회차 장비 줄이기" ${(r.n||1)<=1?'disabled':''}>−</button><output>${r.n||1}대</output><button type="button" data-up="${i}" aria-label="${i+1}회차 장비 늘리기" ${(r.n||1)>=20?'disabled':''}>+</button></div><em>${won(C.price*(r.n||1))}</em></div></div>`).join(''):'<p class="empty">달력에서 날짜를 누르고 시간을 골라 담아 주세요</p>'}
  function sum3(){$('#sum3').innerHTML=S.rounds.map((r,i)=>`<div><span>${i+1}회차</span><b>${dL(r.date)} · ${r.pick} 수령 → ${r.ret} 반납<br>장비 ${r.n||1}대 · ${won(C.price*(r.n||1))}</b></div>`).join('')+[['예약자',$('#name').value.trim()],['휴대폰',$('#phone').value],['스키스쿨',S.school],...($('#memo').value.trim()?[['요청 사항',$('#memo').value.trim()]]:[])].map(([a,v])=>`<div><span>${a}</span><b>${esc(v)}</b></div>`).join('');$('#tot3').textContent=won(C.price*qty())}
  function bar(){const n=S.rounds.length,t=won(C?C.price*qty():0),nx=$('#next');$('#prev').hidden=S.step===1;
   if(S.step===1){nx.disabled=!n;nx.innerHTML=n?`<small>${n}회차 · 장비 ${qty()}대 · ${t}</small>다음`:'회차를 담아 주세요'}
@@ -177,7 +178,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  $('#picks').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.pick=b.dataset.v;if(S.ret&&S.ret<=S.pick)S.ret='';pickPanel()};
  $('#rets').onclick=e=>{const b=e.target.closest('.opt');if(!b||b.disabled)return;S.ret=b.dataset.v;pickPanel()};
  $('#add').onclick=()=>{S.rounds.push({date:S.date,pick:S.pick,ret:S.ret,n:S.n});S.rounds.sort((a,z)=>(a.date+a.pick).localeCompare(z.date+z.pick));S.pick='';S.ret='';save();all()};
- $('#rounds').onclick=e=>{const b=e.target.closest('[data-del]');if(!b)return;S.rounds.splice(+b.dataset.del,1);save();all()};
+ $('#rounds').onclick=e=>{const b=e.target.closest('[data-del],[data-up],[data-dn]');if(!b||b.disabled)return;if(b.dataset.del!=null)S.rounds.splice(+b.dataset.del,1);else{const r=S.rounds[+(b.dataset.up??b.dataset.dn)];r.n=Math.max(1,Math.min(20,(r.n||1)+(b.dataset.up!=null?1:-1)))}save();all()};
  $('#schools').onclick=e=>{const b=e.target.closest('.opt');if(!b)return;S.school=b.dataset.v;paint2();save();bar()};
  $('#minus').onclick=()=>{S.n=Math.max(1,S.n-1);pickPanel()};$('#plus').onclick=()=>{S.n=Math.min(20,S.n+1);pickPanel()};
  ['#name','#memo'].forEach(s=>$(s).addEventListener('input',()=>{save();bar()}));$('#agree').addEventListener('change',bar);
