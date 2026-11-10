@@ -146,7 +146,7 @@ label.f{display:block;font-weight:800;font-size:13px;color:var(--sub);margin:14p
  const WD='일월화수목금토',dL=d=>{const t=new Date(d+'T12:00:00');return `${t.getMonth()+1}월 ${t.getDate()}일 (${WD[t.getDay()]})`},won=n=>Number(n).toLocaleString('ko-KR')+'원';
  const plus=(hm,m)=>{const [h,mm]=hm.split(':').map(Number),t=h*60+mm+m;return String(Math.floor(t/60)).padStart(2,'0')+':'+String(t%60).padStart(2,'0')};
  const S={step:1,month:'',date:'',pick:'',ret:'',rounds:[],school:qs.get('school')||'',n:1};const qty=()=>S.rounds.reduce((a,r)=>a+(+r.n||1),0);const T0=new Date(Date.now()+9*36e5).toISOString(),Y=+T0.slice(0,4),SY=+T0.slice(5,7)>=4?Y:Y-1,TD=T0.slice(0,10);
- let C={today:TD,nowHM:T0.slice(11,16),from:TD>SY+'-12-01'?TD:SY+'-12-01',to:(SY+1)+'-03-08',pick:['08:20','10:30','13:20','15:30'],ret:['11:00','13:10','16:00','18:10'],wait:30,place:'곤지암 스키디하우스 앞 광장',price:10000,tel:'010-3991-2636',closed:[],full:[],schools:['아랑스키스쿨','라온스키스쿨','스키즈스키스쿨','이지스키스쿨'],fallback:1};
+ let C={today:TD,nowHM:T0.slice(11,16),from:TD>SY+'-12-01'?TD:SY+'-12-01',to:(SY+1)+'-03-08',pick:['08:20','10:30','13:20','15:30'],ret:['11:00','13:10','16:00','18:10'],wait:30,place:'곤지암 스키디하우스 앞 광장',price:10000,tel:'010-3991-2636',closed:[],full:[],schools:['아랑스키스쿨','라온스키스쿨','스키즈스키스쿨','이지스키스쿨','리틀메가스키스쿨','펀스키스쿨'],fallback:1};
  try{const d=JSON.parse(sessionStorage.getItem('skp_draft')||'null');if(d&&!qs.get('paymentKey'))Object.assign(S,d,{step:1})}catch(e){}
  const save=()=>{try{sessionStorage.setItem('skp_draft',JSON.stringify({rounds:S.rounds,school:S.school,n:S.n,name:$('#name').value,phone:$('#phone').value,memo:$('#memo').value}))}catch(e){}};
  if(qs.get('phone'))$('#phone').value=$('#mPhone').value=fmtPh(qs.get('phone'));
