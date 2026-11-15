@@ -2136,8 +2136,8 @@ p, li, summary { text-wrap: pretty; }
   if(S.step===1){nx.disabled=!n;nx.innerHTML=n?`<small>${n}회차 · 장비 ${qty()}대 · ${t}<\/small>다음`:'회차를 담아 주세요'}
   else if(S.step===2){nx.disabled=!ok2();nx.innerHTML='다음'}
   else{nx.disabled=!$('#agree').checked;nx.innerHTML=`${t} 결제하기`}}
- function step(n){S.step=n;['#s1','#s2','#s3'].forEach((s,i)=>$(s).hidden=i+1!==n);$('#sd').hidden=true;$('#mine').hidden=true;$('#bar').hidden=false;$('#steps').hidden=false;
-  R.querySelectorAll('#steps span').forEach(s=>s.className=+s.dataset.s===n?'on':+s.dataset.s<n?'done':'');if(n===3)sum3();if(n===2)paint2();$('#err').textContent='';bar();document.getElementById('pickup').scrollIntoView({block:'start'})}
+ function step(n,q){S.step=n;['#s1','#s2','#s3'].forEach((s,i)=>$(s).hidden=i+1!==n);$('#sd').hidden=true;$('#mine').hidden=true;$('#bar').hidden=false;$('#steps').hidden=false;
+  R.querySelectorAll('#steps span').forEach(s=>s.className=+s.dataset.s===n?'on':+s.dataset.s<n?'done':'');if(n===3)sum3();if(n===2)paint2();$('#err').textContent='';bar();if(!q)document.getElementById('pickup').scrollIntoView({block:'start'})}
  function paint2(){$('#schools').innerHTML=C.schools.map(s=>`<button type="button" class="opt" data-v="${esc(s)}" aria-pressed="${S.school===s}">${esc(s)}<\/button>`).join('')}
  function all(){cal();pickPanel();rounds();bar()}
  $('#months').onclick=e=>{const b=e.target.closest('[data-m]');if(!b)return;S.month=b.dataset.m;cal()};
@@ -2183,7 +2183,7 @@ p, li, summary { text-wrap: pretty; }
    if(qs.get('pay'))setTimeout(()=>document.getElementById('pickup').scrollIntoView({block:'start'}),300);if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();
    if(qs.get('pay')==='fail'){history.replaceState(null,'',location.pathname+'#pickup');step(3);$('#err').textContent=qs.get('message')||'결제가 완료되지 않았어요';return}
    if(qs.get('tab')==='mine')return tab('mine');
-   step(1);all()}catch(e){if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();step(1);all()}})();
+   step(1,1);all()}catch(e){if(qs.get('pay')==='ok'&&qs.get('paymentKey'))return finish();step(1,1);all()}})();
 })();
 </script></div></div>
 <div id="rental" class="b2v vc"><div class="vc-card"><div class="b2c">
